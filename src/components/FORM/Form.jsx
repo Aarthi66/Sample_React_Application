@@ -23,8 +23,8 @@ class ConnectedForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { title } = this.state;           //Destructuring to make the variables more readable from object
 
+    const { title } = this.state;           //Destructuring to make the variables more readable from object
     if(title !== ''&& title.trim()!==''){   
     const id = uuidv1();                    //creating ID for each entries using Universal Unique Identifier
     this.props.addNotes({ title, id });     //addNotes function in actions is called 
