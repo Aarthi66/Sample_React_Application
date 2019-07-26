@@ -15,8 +15,8 @@ module.exports ={
     module :{
         rules :[
             {
-                test: /\.(js|jsx)$/,          // regular expression
-                exclude: /node_modules/,   // if we neglect this, then the loader include all extensions in node_modules
+                test: /\.(js|jsx)$/,          
+                exclude: /node_modules/,   
                 loaders: [
                     'babel-loader'
                 ]
