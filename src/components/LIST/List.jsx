@@ -11,23 +11,6 @@ function mapDispatchToProps(dispatch) {
     delItem: index => dispatch(delItem(index))
   };
 }
-// deleteitem(e)
-// {
-//   e.preventDefault();
-//   this.props.delItem(e.id);
-// };
-// const ConnectedList = ({ articles }) => (
-
-//  <div>
-//    {articles.map(el => (
-//     //  <Form.Control size="lg" type="text" placeholder={el.title} />
-//       <div className="List" onClick={(el)=> this.deleteitem(el) } key={el.id}>
-//         {el.title}
-//       </div>
-//     ))}
-//  </div>
-
-// );
 class ConnectedList extends Component {
   constructor() {
     super();
@@ -42,18 +25,6 @@ class ConnectedList extends Component {
     return (
       <div>
         {notes.map(el => (
-          //  <Form.Control size="lg" type="text" placeholder={el.title} />
-          // <div className="List"
-
-          // key={el.id} >
-          //   {el.title}
-          // </div>
-          // <div
-          //   className="List"
-          //   key={el.id}
-          //   onClick={() => this.deleteitem(el.id)} >
-          //   {el.title}
-          // </div>
           <Comp val={el.title} id={el.id} delete={this.deleteitem} />
         ))}
       </div>

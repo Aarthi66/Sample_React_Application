@@ -1,12 +1,10 @@
-
-  /* The header */
-  .header {
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    font-style: italic;
-    color: #f1f1f1;
-    background: #3367d6;
-    padding: 40px;
-  }
-  
+/* The header */
+.header {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+  color: #f1f1f1;
+  background: #3367d6;
+  padding: 40px;
+}

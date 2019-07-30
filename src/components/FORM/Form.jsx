@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
-import { addNotes ,delItem } from "../../js/actions/index";
-import "./Form.css"
-import { ENETRESET } from "constants";
-function mapDispatchToProps(dispatch) {        //dispatch the actions 
+import { addNotes, delItem } from "../../js/actions/index";
+import "./Form.css";
+
+function mapDispatchToProps(dispatch) {
+  //dispatch the actions
   return {
     addNotes: notes => dispatch(addNotes(notes)),
     delItem: index => dispatch(delItem(index))
@@ -25,47 +26,38 @@ class ConnectedForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { title } = this.state;           //Destructuring to make the variable more readable from object
+    const { title } = this.state; //Destructuring to make the variable more readable from object
 
-    if(title !== ''&& title.trim()!==''){   
-    const id = uuidv1();                    //creating ID for each entries using Universal Unique Identifier
-    this.props.addNotes({ title, id });     //addNotes function in actions is called 
-    this.setState({ title: "" });           //Making the content in text box as empty once it get added
+    if (title !== "" && title.trim() !== "") {
+      const id = uuidv1(); //creating ID for each entries using Universal Unique Identifier
+      this.props.addNotes({ title, id }); //addNotes function in actions is called
+      this.setState({ title: "" }); //Making the content in text box as empty once it get added
     }
-    
   }
-//   handleKeyPress(event){
-//     event.preventDefault();
-//     if(event.key == 'Enter'){
-//       const { title } = this.state;           //Destructuring to make the variable more readable from object
-
-//     if(title !== ''&& title.trim()!==''){   
-//     const id = uuidv1();                    //creating ID for each entries using Universal Unique Identifier
-//     this.props.addNotes({ title, id });     //addNotes function in actions is called 
-//     this.setState({ title: "" }); 
-//     }
-//   }
-// }
 
   render() {
     const { title } = this.state;
-    
+
     return (
       <div>
-          <input
-            type="text"
-            className="textInput"
-            id="title"
-            value={title}
-            onChange={this.handleChange}
-            // onKeyPress={this.handleKeyPress}
-          />
-        <div className='btn' onClick={this.handleSubmit}>+</div>
+        <input
+          type="text"
+          className="textInput"
+          id="title"
+          value={title}
+          onChange={this.handleChange}
+          // onKeyPress={this.handleKeyPress}
+        />
+        <div className="btn" onClick={this.handleSubmit}>
+          +
+        </div>
       </div>
-         
     );
   }
 }
 //connect react component with redux by CONNECT
-const Form = connect(null, mapDispatchToProps)(ConnectedForm);
+const Form = connect(
+  null,
+  mapDispatchToProps
+)(ConnectedForm);
 export default Form;
