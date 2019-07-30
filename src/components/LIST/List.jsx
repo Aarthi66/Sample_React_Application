@@ -1,9 +1,10 @@
-import React ,{Component} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./List.css"
-import {delItem} from '../../js/actions/index'
-const mapStateToProps = (state) => {          
-  return { notes: state.notes};
+import "./List.css";
+import { delItem } from "../../js/actions/index";
+import Comp from "../clickComp";
+const mapStateToProps = state => {
+  return { notes: state.notes };
 };
 function mapDispatchToProps(dispatch) {
   return {
@@ -16,7 +17,7 @@ function mapDispatchToProps(dispatch) {
 //   this.props.delItem(e.id);
 // };
 // const ConnectedList = ({ articles }) => (
-  
+
 //  <div>
 //    {articles.map(el => (
 //     //  <Form.Control size="lg" type="text" placeholder={el.title} />
@@ -25,38 +26,42 @@ function mapDispatchToProps(dispatch) {
 //       </div>
 //     ))}
 //  </div>
-    
+
 // );
 class ConnectedList extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.deleteitem= this.deleteitem.bind(this);
+    this.deleteitem = this.deleteitem.bind(this);
   }
-  deleteitem(e)               
-{
-  debugger;
-  this.props.delItem(e);
-  
+  deleteitem(e) {
+    this.props.delItem(e);
+  }
+  render() {
+    let notes = this.props.notes;
+    console.log(notes);
+    return (
+      <div>
+        {notes.map(el => (
+          //  <Form.Control size="lg" type="text" placeholder={el.title} />
+          // <div className="List"
+
+          // key={el.id} >
+          //   {el.title}
+          // </div>
+          // <div
+          //   className="List"
+          //   key={el.id}
+          //   onClick={() => this.deleteitem(el.id)} >
+          //   {el.title}
+          // </div>
+          <Comp val={el.title} id={el.id} delete={this.deleteitem} />
+        ))}
+      </div>
+    );
+  }
 }
-render() {
-  let  notes =this.props.notes;
-  console.log(notes);
-  return (
-     <div >
-      {notes.map(el => (
-    //  <Form.Control size="lg" type="text" placeholder={el.title} />
-      // <div className="List" 
-      
-      // key={el.id} >
-      //   {el.title} 
-      // </div>
-      <div className="List"  key={el.id} onClick={()=>this.deleteitem(el.id)}>
-      {el.title} 
-    </div>
-    ))}
- </div>
-  )
-}
-}
-const List = connect(mapStateToProps,mapDispatchToProps)(ConnectedList);
+const List = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedList);
 export default List;
