@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import uuidv1 from "uuid";
 import { addNotes ,delItem } from "../../js/actions/index";
 import "./Form.css"
+import { ENETRESET } from "constants";
 function mapDispatchToProps(dispatch) {        //dispatch the actions 
   return {
     addNotes: notes => dispatch(addNotes(notes)),
@@ -17,13 +18,14 @@ class ConnectedForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleKeyPress=this.handleKeyPress.bind(this);
   }
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { title } = this.state;           //Destructuring to make the variables more readable from object
+    const { title } = this.state;           //Destructuring to make the variable more readable from object
 
     if(title !== ''&& title.trim()!==''){   
     const id = uuidv1();                    //creating ID for each entries using Universal Unique Identifier
@@ -32,6 +34,19 @@ class ConnectedForm extends Component {
     }
     
   }
+//   handleKeyPress(event){
+//     event.preventDefault();
+//     if(event.key == 'Enter'){
+//       const { title } = this.state;           //Destructuring to make the variable more readable from object
+
+//     if(title !== ''&& title.trim()!==''){   
+//     const id = uuidv1();                    //creating ID for each entries using Universal Unique Identifier
+//     this.props.addNotes({ title, id });     //addNotes function in actions is called 
+//     this.setState({ title: "" }); 
+//     }
+//   }
+// }
+
   render() {
     const { title } = this.state;
     
@@ -43,6 +58,7 @@ class ConnectedForm extends Component {
             id="title"
             value={title}
             onChange={this.handleChange}
+            // onKeyPress={this.handleKeyPress}
           />
         <div className='btn' onClick={this.handleSubmit}>+</div>
       </div>
