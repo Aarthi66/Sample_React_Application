@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class Comp extends Component {
-  deleteitem = () => {
+  deleteitem(){
     this.props.delete(this.props.id);
   };
   render() {
